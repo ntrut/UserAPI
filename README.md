@@ -16,4 +16,18 @@ Now you are ready to use the API!
 
 ## API Docs
 
+### GET Requests
+```bash
+#Returns one user based on the id
+http://localhost:8080/infor/read/{id}
+```
 
+```bash
+#Returns all users from the database
+http://localhost:8080/infor/list
+```
+
+```bash
+#Returns all users from the database in either asc or desc order and can be sorted by first name or last name or email or id.
+http://localhost:8080/infor/list?order=asc&sort=first_name
+```
