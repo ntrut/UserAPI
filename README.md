@@ -1,5 +1,5 @@
 # UserAPI
-An restful api that uses CRUDL to support user endpoints. Stores the users in mysqlite. Creates 10 users when the program starts.
+An restful api that uses CRUDL to support user endpoints. Stores the users in mysqlite. Creates 10 users when the program starts. 
 
 ## How to start the API
 First you need to create a folder and call it whatever you want. Then change your directory to that folder you just created.
@@ -12,7 +12,7 @@ Make sure your still in the directory you created. Next go into UserAPI folder t
 ```bash
 go run .
 ```
-Now you are ready to use the API!
+The program runs on localhost with port 8080, just make sure nothing is being used on that port. Now you are ready to use the API!
 
 ## API Docs
 
@@ -36,6 +36,7 @@ http://localhost:8080/infor/list?order={asc or desc}&sort={user parameter}
 ### POST Requests
 This is how the body needs to look like when sending the POST request. This http request will throw 409 CONFLICT if the id already exists in the database.
 ```json
+#request body
 {
     "id": 11,
     "email": "helloworld@gmail.com",
@@ -54,6 +55,7 @@ curl -X POST http://localhost:8080/infor/create -H 'Content-Type: application/js
 ### PUT Requests
 This is how the body needs to look like when sending the PUT request. We update the email first name and last name. This http request will throw 404 NOT FOUND if user with that id doesnt exist. Id needs to be a number that is creater than 0 else it will throw a 400 BAD Reqeust.
 ```json
+#request body
 {
     "email": "helloworld@gmail.com",
     "first_name": "hello",
@@ -71,3 +73,7 @@ Simple delete request. Will throw a 404 NOT FOUND if the id doesnt exist. Id nee
 #Deletes one user with that id
 http://localhost:8080/infor/delete/{id}
 ```
+### Time spend on this project
+About 7 hours
+
+### Trades off made on the implemention
