@@ -17,6 +17,7 @@ Now you are ready to use the API!
 ## API Docs
 
 ### GET Requests
+All http GET Requests. The read request will throw a 404 NOT FOUND if the id doesnt exist. Id needs to be a number that is creater than 0 else it will throw a 400 BAD Reqeust. IF the parameters are incorrect for the list request, it will throw a 400 BAD REQUEST.
 ```bash
 #Returns one user based on the id
 http://localhost:8080/infor/read/{id}
@@ -33,10 +34,10 @@ http://localhost:8080/infor/list?order={asc or desc}&sort={user parameter}
 ```
 
 ### POST Requests
-This is how the body needs to look like when sending the post request
+This is how the body needs to look like when sending the POST request. This http request will throw 409 CONFLICT if the id already exists in the database.
 ```json
 {
-    "id": 9,
+    "id": 11,
     "email": "helloworld@gmail.com",
     "first_name": "hello",
     "last_name": "world"
@@ -46,7 +47,27 @@ Example on how it works with curl
 ```bash
 #Creates one user
 curl -X POST http://localhost:8080/infor/create -H 'Content-Type: application/json' -d '{"id":11,"email":"helloworld@gmail.com","first_name":"hello","last_name":"world"}'
-#response
+#response returns the user created with the timestamp as well
 -> {"id":11,"email":"helloworld@gmail.com","first_name":"hello","last_name":"world","updated":"2021-11-23 14:00:11.463186244 -0800 PST m=+919.601937982"}
 
+```
+### PUT Requests
+This is how the body needs to look like when sending the PUT request. We update the email first name and last name. This http request will throw 404 NOT FOUND if user with that id doesnt exist. Id needs to be a number that is creater than 0 else it will throw a 400 BAD Reqeust.
+```json
+{
+    "email": "helloworld@gmail.com",
+    "first_name": "hello",
+    "last_name": "world"
+}
+```
+```bash
+#Updates one user with that id
+http://localhost:8080/infor/update/{id}
+```
+
+### DELETE Reqeusts
+Simple delete request. Will throw a 404 NOT FOUND if the id doesnt exist. Id needs to be a number that is creater than 0 else it will throw a 400 BAD Reqeust.
+```bash
+#Deletes one user with that id
+http://localhost:8080/infor/delete/{id}
 ```
