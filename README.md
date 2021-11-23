@@ -29,5 +29,24 @@ http://localhost:8080/infor/list
 
 ```bash
 #Returns all users from the database in either asc or desc order and can be sorted by first name or last name or email or id.
-http://localhost:8080/infor/list?order=asc&sort=first_name
+http://localhost:8080/infor/list?order={asc or desc}&sort={user parameter}
+```
+
+### POST Requests
+This is how the body needs to look like when sending the post request
+```json
+{
+    "id": 9,
+    "email": "helloworld@gmail.com",
+    "first_name": "hello",
+    "last_name": "world"
+}
+```
+Example on how it works with curl
+```bash
+#Creates one user
+curl -X POST http://localhost:8080/infor/create -H 'Content-Type: application/json' -d '{"id":11,"email":"helloworld@gmail.com","first_name":"hello","last_name":"world"}'
+#response
+-> {"id":11,"email":"helloworld@gmail.com","first_name":"hello","last_name":"world","updated":"2021-11-23 14:00:11.463186244 -0800 PST m=+919.601937982"}
+
 ```
