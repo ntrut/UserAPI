@@ -12,7 +12,7 @@ Make sure your still in the directory you created. Next go into UserAPI folder t
 ```bash
 go run .
 ```
-The program runs on localhost with port 8080, just make sure nothing is being used on that port. Now you are ready to use the API!
+The program runs on localhost with port 8080, just make sure nothing is being used on that port. Also, you dont need to do anything with the db file. The program will automatically overwrite it when the program first runs. The program will always start with the same 10 users. Now you are ready to use the API!
 
 ## API Docs
 
@@ -36,7 +36,6 @@ http://localhost:8080/infor/list?order={asc or desc}&sort={user parameter}
 ### POST Requests
 This is how the body needs to look like when sending the POST request. This http request will throw 409 CONFLICT if the id already exists in the database.
 ```json
-#request body
 {
     "id": 11,
     "email": "helloworld@gmail.com",
@@ -53,9 +52,8 @@ curl -X POST http://localhost:8080/infor/create -H 'Content-Type: application/js
 
 ```
 ### PUT Requests
-This is how the body needs to look like when sending the PUT request. We update the email first name and last name. This http request will throw 404 NOT FOUND if user with that id doesnt exist. Id needs to be a number that is creater than 0 else it will throw a 400 BAD Reqeust.
+This is how the body needs to look like when sending the PUT request. We update the email first name and last name. This http request will throw 404 NOT FOUND if user with that id doesnt exist. Id needs to be a number that is greater than 0 else it will throw a 400 BAD Reqeust.
 ```json
-#request body
 {
     "email": "helloworld@gmail.com",
     "first_name": "hello",
@@ -77,3 +75,4 @@ http://localhost:8080/infor/delete/{id}
 About 7 hours
 
 ### Trades off made on the implemention
+I didnt make any tradeoffs during the implementation. I stuck with the same plan throughout the project. I tried to do as many checks as possible for each query parameter that is being sent to the API. The API will throw errors if the parameters being sent are wrong. I did the mega extra credit which adds two query parameters to the list url if the user wants to.
