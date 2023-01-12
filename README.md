@@ -71,8 +71,3 @@ Simple delete request. Will throw a 404 NOT FOUND if the id doesnt exist. Id nee
 #Deletes one user with that id
 http://localhost:8080/infor/delete/{id}
 ```
-### Time spend on this project
-About 7 hours
-
-### Trades off made on the implemention
-I didnt make any tradeoffs during the implementation. I stuck with the same plan throughout the project. I tried to do as many checks as possible for each query parameter that is being sent to the API. The API will throw errors if the parameters being sent are wrong. I did the mega extra credit which adds two query parameters to the list url if the user wants to.
